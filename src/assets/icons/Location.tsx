@@ -12,7 +12,7 @@ const Location = ({ className }: { className: string }) => {
       <path
         d="M0 0h32v32H0z"
         data-name="&lt;Transparent Rectangle&gt;"
-        className="fill-transparent"
+        fill="transparent"
         transform="rotate(-90 16 16)"
       />
     </svg>

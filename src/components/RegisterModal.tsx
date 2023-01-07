@@ -78,7 +78,7 @@ const RegisterModal = ({
         <div className="flex flex-col items-center justify-evenly gap-y-4 w-3/5 mt-4">
           <input
             className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+              errors.name ? "input-error" : "input-accent"
             }`}
             type="text"
             {...register("name", {
@@ -88,7 +88,7 @@ const RegisterModal = ({
           />
           <input
             className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+              errors.surname ? "input-error" : "input-accent"
             }`}
             type="text"
             {...register("surname", {
@@ -98,7 +98,7 @@ const RegisterModal = ({
           />
           <input
             className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+              errors.phone ? "input-error" : "input-accent"
             }`}
             type="text"
             {...register("phone", {
@@ -108,7 +108,7 @@ const RegisterModal = ({
           />
           <input
             className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+              errors.address ? "input-error" : "input-accent"
             }`}
             type="text"
             {...register("address", {
@@ -128,7 +128,7 @@ const RegisterModal = ({
           />
           <input
             className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+              errors.password ? "input-error" : "input-accent"
             }`}
             type="password"
             {...register("password", {

@@ -10,6 +10,8 @@ import {
 } from "firebase/firestore";
 import React from "react";
 import { toast } from "react-toastify";
+import Cancel from "../assets/icons/Cancel";
+import Tick from "../assets/icons/Tick";
 import app from "../util/firebase";
 
 const NotificationCard = ({
@@ -74,13 +76,19 @@ const NotificationCard = ({
       <div className="card-body justify-between">
         <div className="flex flex-col justify-center">
           <h2 className="font-medium text-3xl">{title}</h2>
-          <span className="text-sm">
+          <span className="text-sm flex flex-row items-center justify-between">
             <p>{date}</p>
             {!request &&
               (approved ? (
-                <p className="text-green-600 font-semibold">Potvrdjeno</p>
+                <div className="flex flex-row items-center gap-x-1">
+                  <Tick className="stroke-green-600 w-8 h-8"></Tick>
+                  <p className="text-green-600 font-semibold">Potvrdjeno</p>
+                </div>
               ) : approved === false ? (
-                <p className="text-red-600 font-semibold">Odbijeno</p>
+                <div className="flex flex-row items-center gap-x-1">
+                  <Cancel className="stroke-red-600 w-8 h-8 stroke-[6]"></Cancel>
+                  <p className="text-red-600 font-semibold">Odbijeno</p>
+                </div>
               ) : (
                 <></>
               ))}
