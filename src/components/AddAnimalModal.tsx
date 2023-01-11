@@ -7,6 +7,7 @@ import app from "../util/firebase";
 import Modal from "./Modal";
 import { getStorage } from "firebase/storage";
 import { useState } from "react";
+import Cancel from "../assets/icons/Cancel";
 
 type animal_data = {
   name: string;
@@ -33,6 +34,7 @@ const AddAnimalModal = ({
 
   const [uploadFile, uploading, snapshot, error] = useUploadFile();
   const [animalImage, setAnimalImage] = useState<File>();
+  const [animalImageURL, setAnimalImageURL] = useState<string>();
 
   const handleAddNewAnimal = (data: animal_data) => {
     if (animalImage) {
@@ -82,8 +84,8 @@ const AddAnimalModal = ({
         <h1 className="text-3xl font-semibold text-stone-800">
           Nova životinja
         </h1>
-        <div className="flex flex-grow gap-x-12">
-          <div className="flex flex-col justify-evenly w-2/3">
+        <div className="flex flex-grow flex-col gap-y-4 items-center mt-4 w-full">
+          <div className="flex flex-col justify-evenly w-2/3 gap-y-4">
             <input
               type={"text"}
               placeholder="Naziv životinje"
@@ -103,29 +105,56 @@ const AddAnimalModal = ({
               {...register("description", { required: "Morate uneti opis!" })}
             ></textarea>
           </div>
-          <div className="flex items-center justify-center w-1/3">
+          {/* <div className="flex items-center justify-center"> */}
+          {!animalImage ? (
             <button
-              className="btn btn-accent btn-block"
+              className="btn btn-accent btn-wide"
               onClick={() => document.getElementById("file-input")?.click()}
               type={"button"}
             >
               Izaberi sliku
             </button>
-            <input
-              type="file"
-              hidden
-              id={"file-input"}
-              onChange={(e) => setAnimalImage(e.target.files?.[0])}
-            />
-          </div>
+          ) : (
+            <div className="relative flex justify-center w-5/6">
+              <img src={animalImageURL} className=" aspect-video" />
+              <div
+                className="absolute left-0 translate-x-2 translate-y-2"
+                title="Ponisti izbor"
+                onClick={() => {
+                  if (animalImageURL) URL.revokeObjectURL(animalImageURL);
+                  setAnimalImageURL(undefined);
+                  setAnimalImage(undefined);
+                  (
+                    document.getElementById("file-input") as HTMLInputElement
+                  ).value = "";
+                }}
+              >
+                <Cancel className="stroke-orange-300 w-6 h-6 stroke-[7] hover:scale-150 cursor-pointer transition-transform"></Cancel>
+              </div>
+            </div>
+          )}
+          <input
+            type="file"
+            hidden
+            id={"file-input"}
+            onChange={(e) => {
+              setAnimalImage(e.target.files?.[0]);
+              setAnimalImageURL(
+                e.target.files?.[0]
+                  ? URL.createObjectURL(e.target.files?.[0])
+                  : undefined
+              );
+            }}
+          />
+          {/* </div> */}
+          <button
+            className="btn btn-wide btn-accent"
+            type="submit"
+            disabled={uploading}
+          >
+            Potvrdi
+          </button>
         </div>
-        <button
-          className="btn btn-wide btn-accent"
-          type="submit"
-          disabled={uploading}
-        >
-          Potvrdi
-        </button>
       </form>
     </Modal>
   );

@@ -5,6 +5,7 @@ import ticketImage from "../assets/ticket_image(Custom).png";
 import eventImage from "../assets/event_image(Custom).jpg";
 import animalImage from "../assets/animal_image(Custom).jpg";
 import contactImage from "../assets/contact_image(Custom).jpg";
+import cartImage from "../assets/cart_image.png";
 import NavigationCard from "../components/NavigationCard";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
@@ -56,7 +57,7 @@ const Home = () => {
           <>
             <NavigationCard
               title="Zahtevi"
-              image={contactImage}
+              image={cartImage}
               to="/requests"
               description="Pregled trenutnih zahteva"
             ></NavigationCard>

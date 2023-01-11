@@ -13,6 +13,7 @@ import UserMenu from "./UserMenu";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import app from "../util/firebase";
+import Cart from "../assets/icons/Cart";
 
 const Header = () => {
   const home = useLocation().pathname === "/";
@@ -81,6 +82,23 @@ const Header = () => {
             </NavLink>
           </>
         )}
+        {admin && (
+          <NavLink
+            to={"/requests"}
+            className="group/icon w-1/5 group-hover:after:content-['Zahtevi'] group-hover:after:text-2xl flex flex-col items-center gap-y-1 cursor-pointer hover:text-amber-400"
+          >
+            {({ isActive }) => (
+              <div>
+                <Cart
+                  color={isActive ? "#fbbf24" : ""}
+                  classname="w-14 aspect-square"
+                  strokeColor="group-hover/icon:stroke-amber-400"
+                  pathFill="group-hover/icon:fill-amber-400"
+                ></Cart>
+              </div>
+            )}
+          </NavLink>
+        )}
         <NavLink
           to={"/animals"}
           className="group/icon w-1/5 group-hover:after:content-['Zivotinje'] group-hover:after:text-2xl flex flex-col items-center gap-y-1 cursor-pointer hover:text-amber-400"
@@ -115,11 +133,18 @@ const Header = () => {
       <div className="justify-self-end mr-16 w-fit">
         {user ? (
           <UserMenu
-            items={[
-              { title: "Moj profil", link: "/profile" },
-              { title: "Obavestenja", link: "/notifications" },
-              { title: "Odjavi se", link: "/", action: signout },
-            ]}
+            items={
+              admin
+                ? [
+                    { title: "Moj profil", link: "/profile" },
+                    { title: "Odjavi se", link: "/", action: signout },
+                  ]
+                : [
+                    { title: "Moj profil", link: "/profile" },
+                    { title: "Obavestenja", link: "/notifications" },
+                    { title: "Odjavi se", link: "/", action: signout },
+                  ]
+            }
           ></UserMenu>
         ) : (
           <button

@@ -5,15 +5,19 @@ const ImageCard = ({
   title,
   image,
   link,
+  disabled,
 }: {
   title: string;
   image: string;
   link?: string;
+  disabled?: boolean;
 }) => {
   return (
     <Link
-      className="card w-80 bg-[#ffeccc] elevation-md elevation-md-hover hover:-translate-y-4 transition-transform duration-150 ease-in-out"
-      to={link ?? "/"}
+      className={`card w-80 bg-[#ffeccc] elevation-md elevation-md-hover ${
+        disabled ? "cursor-default" : "hover:-translate-y-4"
+      } transition-transform duration-150 ease-in-out`}
+      to={disabled ? "#" : link ?? "/"}
     >
       <div className="card-body p-5">
         <h2 className="card-title text-2xl text-center text-stone-800 justify-center">

@@ -46,6 +46,7 @@ const Animals = () => {
                 image={animal.image}
                 link={`/animal/${item.id}`}
                 key={item.id}
+                disabled={admin}
               ></ImageCard>
             );
           })}
