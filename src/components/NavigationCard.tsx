@@ -15,7 +15,7 @@ const NavigationCard = ({
   return (
     <Link
       to={to}
-      className="card shadow-xl bg-orange-200 flex flex-col items-center justify-evenly h-[90%] w-1/5  hover:-translate-y-4 hover:scale-105 cursor-pointer transition-transform duration-200 ease-in-out text-stone-800"
+      className="card shadow-xl bg-orange-200 flex flex-col items-center justify-evenly h-[90%] md:w-1/5 w-[90%] hover:-translate-y-4 hover:scale-105 cursor-pointer transition-transform duration-200 ease-in-out text-stone-800 last-of-type:mb-4 md:last-of-type:mb-0"
     >
       <figure className="px-6 pt-6 min-h-[250px]">
         <img src={image} alt="" className="rounded-xl object-scale-down" />
@@ -25,7 +25,6 @@ const NavigationCard = ({
         <p>{description}</p>
         <div className="card-actions"></div>
       </div>
-      {/* </div> */}
     </Link>
   );
 };

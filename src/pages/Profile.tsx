@@ -108,7 +108,7 @@ const Profile = () => {
   const [signout] = useSignOut(getAuth(app));
 
   return (
-    <div className="flex m-auto h-[clamp(400px,750px,80vh)] items-center justify-center gap-x-8 w-full">
+    <div className="flex md:m-auto my-4 md:h-[clamp(400px,750px,80vh)] items-center justify-center gap-x-8 w-full md:flex-row flex-col gap-y-4 md:gap-y-0">
       <div className="flex flex-col gap-y-4 min-w-[25%]">
         <div className="flex flex-col">
           <label htmlFor={`${id}-name`}>Ime</label>
@@ -174,7 +174,8 @@ const Profile = () => {
           Izmeni podatke
         </button>
       </div>
-      <div className="divider divider-horizontal h-3/5 self-center before:bg-stone-800 before:bg-opacity-60 after:bg-stone-800 after:bg-opacity-60"></div>
+      <div className="divider divider-horizontal hidden md:flex h-3/5 self-center before:bg-stone-800 before:bg-opacity-60 after:bg-stone-800 after:bg-opacity-60"></div>
+      <div className="block border-b-2 border-stone-800 w-5/6 md:hidden"></div>
       <form
         className="flex flex-col gap-y-4 min-w-[25%]"
         onSubmit={handlePassChange(handleNewPass, handleError)}

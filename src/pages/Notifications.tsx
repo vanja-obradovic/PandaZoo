@@ -19,7 +19,7 @@ const Notifications = () => {
   );
 
   return (
-    <div className="w-4/5 h-full m-auto flex flex-col gap-y-4 justify-center items-center">
+    <div className="md:w-4/5 md:mx-auto mx-4 h-full m-auto flex flex-col gap-y-4 justify-center items-center">
       <Carousel className="carousel-vertical w-full space-y-4 overflow-x-hidden max-h-[750px] my-4 ">
         {snapshot?.docs.map((doc) => {
           const request = doc.data();

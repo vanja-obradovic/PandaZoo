@@ -75,7 +75,7 @@ const NotificationCard = ({
     <div className="card w-full mx-4 bg-[#ffeccc] elevation-sm text-stone-800 self-center">
       <div className="card-body justify-between">
         <div className="flex flex-col justify-center">
-          <h2 className="font-medium text-3xl">{title}</h2>
+          <h2 className="font-medium md:text-3xl text-2xl">{title}</h2>
           <span className="text-sm flex flex-row items-center justify-between">
             <p>{date}</p>
             {!request &&
@@ -96,13 +96,13 @@ const NotificationCard = ({
         </div>
         <div className="text-lg">
           {request ? (
-            <div className="flex justify-between">
+            <div className="flex md:flex-row flex-col justify-between gap-y-4 md:gap-y-0">
               <div>
                 <p>{`Kupac: ${buyer}`}</p>
                 <p>{`Kolicina: ${quantity} kom`}</p>
                 <p>{`Cena: ${price} rsd`}</p>
               </div>
-              <div className="mr-16 flex gap-x-8">
+              <div className="md:mr-16 flex md:flex-row flex-col md:gap-x-8 md:gap-y-0 gap-y-4 items-center md:items-start">
                 <button
                   className="btn btn-success btn-wide"
                   onClick={handleApprove}

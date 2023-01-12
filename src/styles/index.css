@@ -18,6 +18,10 @@
 }
 
 
+html, body{
+    background-color: #ffedd5!important;
+}
+
 #root{
     min-height: 100vh;
     background-color: #ffedd5;

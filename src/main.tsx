@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         draggable
         pauseOnHover
         theme="light"
+        toastClassName={"w-3/5 md:w-auto translate-x-1/3 md:translate-x-0"}
       />
       <Header></Header>
       <App></App>

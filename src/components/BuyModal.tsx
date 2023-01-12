@@ -112,7 +112,7 @@ const BuyModal = ({
       }}
     >
       <form
-        className="flex flex-col flex-grow justify-evenly items-center"
+        className="flex flex-col flex-grow justify-evenly items-center gap-y-4 md:gap-y-0"
         onSubmit={handleSubmit(handlePurchase, handleError)}
       >
         <h1 className="text-3xl font-semibold text-stone-800">
@@ -157,7 +157,9 @@ const BuyModal = ({
           )}
         </div>
         <div className="flex flex-col items-center justify-center gap-y-4">
-          <div>Ispod možete uneti promo kod za popust, ukoliko ga imate:</div>
+          <div className="text-center">
+            Ispod možete uneti promo kod za popust, ukoliko ga imate:
+          </div>
           <div className="relative">
             <input
               type={"text"}

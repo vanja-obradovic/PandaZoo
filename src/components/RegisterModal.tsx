@@ -83,11 +83,11 @@ const RegisterModal = ({
       }}
     >
       <form
-        className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full"
+        className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full gap-y-4 "
         onSubmit={handleSubmit(handleRegister, handleError)}
       >
         <h1 className="text-3xl text-stone-800 font-semibold">Prijavite se</h1>
-        <div className="flex flex-col items-center justify-evenly gap-y-4 w-3/5 mt-4">
+        <div className="flex flex-col items-center justify-evenly gap-y-4 w-3/5">
           <input
             className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
               errors.name
@@ -146,7 +146,7 @@ const RegisterModal = ({
             {...register("username", {
               required: "Morate uneti korisncko ime!",
             })}
-            placeholder="Korisnicko ime(Email)"
+            placeholder="Korisnicko ime (Email)"
           />
           <input
             className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
@@ -161,10 +161,10 @@ const RegisterModal = ({
             placeholder="Lozinka"
           />
         </div>
-        <button className="btn btn-wide btn-accent mt-4" disabled={loading}>
+        <button className="btn btn-wide btn-accent" disabled={loading}>
           Registruj se
         </button>
-        <span className="text-lg mt-4">
+        <span className="text-lg">
           Imate nalog? Prijavite se
           <button
             className="btn-ghost underline ml-1"

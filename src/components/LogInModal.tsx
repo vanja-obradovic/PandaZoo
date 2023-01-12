@@ -52,9 +52,15 @@ const LogInModal = ({
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal
+      open={open}
+      onClose={() => {
+        onClose();
+        reset();
+      }}
+    >
       <form
-        className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full"
+        className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full gap-y-4 md:gap-y-0"
         onSubmit={handleSubmit(handleLogin, handleError)}
       >
         <h1 className="text-3xl text-stone-800 font-semibold">Prijavite se</h1>
