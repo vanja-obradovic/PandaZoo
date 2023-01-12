@@ -16,7 +16,7 @@ const Home = () => {
   const admin = user?.email === "zaposleni@pandica.rs";
 
   return (
-    <div className="h-[700px] relative sm:bottom-28 bottom-20">
+    <div className="h-[700px] relative lg:bottom-28 bottom-20">
       <video
         src={home_video}
         loop
@@ -25,7 +25,7 @@ const Home = () => {
         className="h-full w-full object-cover"
         placeholder={panda}
       ></video>
-      <div className="relative sm:h-[450px] sm:bottom-56 bottom-48 gap-y-8 sm:gap-y-0 flex sm:flex-row flex-col items-center justify-around">
+      <div className="relative lg:h-[450px] lg:bottom-56 bottom-48 gap-y-8 lg:gap-y-0 flex lg:flex-row flex-col items-center justify-around">
         {!admin ? (
           <>
             <NavigationCard

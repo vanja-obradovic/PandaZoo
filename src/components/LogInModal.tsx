@@ -60,7 +60,7 @@ const LogInModal = ({
       }}
     >
       <form
-        className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full gap-y-4 sm:gap-y-0"
+        className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full gap-y-4 lg:gap-y-0"
         onSubmit={handleSubmit(handleLogin, handleError)}
       >
         <h1 className="text-3xl text-stone-800 font-semibold">Prijavite se</h1>

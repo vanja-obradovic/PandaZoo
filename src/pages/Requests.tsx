@@ -15,7 +15,7 @@ const Requests = () => {
   );
 
   return (
-    <div className="sm:w-4/5 h-full m-auto flex flex-col gap-y-4 justify-center items-center">
+    <div className="lg:w-4/5 h-full m-auto flex flex-col gap-y-4 justify-center items-center">
       <Carousel className="carousel-vertical w-full space-y-4 overflow-x-hidden max-h-[750px] my-4 ">
         {snapshot?.docs.map((doc) => {
           const request = doc.data();

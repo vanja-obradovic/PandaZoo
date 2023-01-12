@@ -31,16 +31,16 @@ const Animals = () => {
 
   return (
     <>
-      <div className="w-full sm:m-auto flex flex-col sm:gap-y-4 justify-center items-center my-2">
+      <div className="w-full lg:m-auto flex flex-col lg:gap-y-4 justify-center items-center my-2">
         {admin && (
           <button
-            className="btn btn-wide btn-accent sm:mb-4"
+            className="btn btn-wide btn-accent lg:mb-4"
             onClick={handleOpen}
           >
             Dodaj životinju
           </button>
         )}
-        <div className="flex sm:flex-row flex-col justify-center items-center sm:gap-x-4 sm:gap-y-0 gap-y-4 w-[90%] my-4 sm:my-0">
+        <div className="flex lg:flex-row flex-col justify-center items-center lg:gap-x-4 lg:gap-y-0 gap-y-4 w-[90%] my-4 lg:my-0">
           {animals?.slice((num - 1) * 5, (num - 1) * 5 + 5).map((item) => {
             const animal = item.data();
             return (
