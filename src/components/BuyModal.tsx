@@ -112,7 +112,7 @@ const BuyModal = ({
       }}
     >
       <form
-        className="flex flex-col flex-grow justify-evenly items-center gap-y-4 md:gap-y-0"
+        className="flex flex-col flex-grow justify-evenly items-center gap-y-4 sm:gap-y-0"
         onSubmit={handleSubmit(handlePurchase, handleError)}
       >
         <h1 className="text-3xl font-semibold text-stone-800">

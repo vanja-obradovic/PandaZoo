@@ -9,10 +9,10 @@ const Carousel = ({
 }) => {
   return (
     <div
-      className={`my-4 md:my-0 carousel carousel-center p-4 bg-orange-200 rounded-box ${
+      className={`my-4 sm:my-0 carousel carousel-center p-4 bg-orange-200 rounded-box ${
         className
           ? className
-          : "md:w-2/3 w-[90%] min-h-[400px] md:space-x-4 space-y-4 md:space-y-0 md:flex-row flex-col md:overflow-x-scroll overflow-y-scroll md:snap-x snap-mandatory snap-y"
+          : "sm:w-2/3 w-[90%] min-h-[400px] sm:space-x-4 space-y-4 sm:space-y-0 sm:flex-row flex-col sm:overflow-x-scroll overflow-y-scroll sm:snap-x snap-mandatory snap-y"
       }`}
     >
       {children}

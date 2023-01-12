@@ -45,11 +45,11 @@ const Animal = () => {
     } else document.getElementById("login_modal")?.click();
   };
   return (
-    <div className="flex flex-col items-center md:w-3/5 mx-2 md:mx-0 self-center gap-y-4">
+    <div className="flex flex-col items-center sm:w-3/5 mx-2 sm:mx-0 self-center gap-y-4">
       <h1 className="text-5xl mt-8 mb-4 text-stone-800 font-medium text-center">
         {data?.name}
       </h1>
-      <div className="md:w-3/5 w-5/6 aspect-video">
+      <div className="sm:w-3/5 w-5/6 aspect-video">
         <img
           src={data?.image}
           alt={id}
