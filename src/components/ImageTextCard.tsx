@@ -55,7 +55,7 @@ const ImageTextCard = ({
   };
 
   return (
-    <div className="card w-96 bg-orange-100 shadow-2xl">
+    <div className="card lg:w-96 w-full bg-orange-100 shadow-2xl">
       <figure className="h-64">
         <img src={image} alt="" className="object-cover h-full w-full" />
       </figure>

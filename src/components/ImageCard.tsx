@@ -14,7 +14,7 @@ const ImageCard = ({
 }) => {
   return (
     <Link
-      className={`card w-80 bg-[#ffeccc] elevation-md elevation-md-hover ${
+      className={`card lg:w-80 w-full bg-[#ffeccc] elevation-md elevation-md-hover ${
         disabled ? "cursor-default" : "hover:-translate-y-4"
       } transition-transform duration-150 ease-in-out`}
       to={disabled ? "#" : link ?? "/"}

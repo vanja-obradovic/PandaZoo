@@ -12,7 +12,7 @@ const TextCard = ({
   guest: boolean;
 }) => {
   return (
-    <div className="card w-96 bg-[#ffeccc] shadow-2xl text-stone-800 text-center">
+    <div className="card lg:w-96 w-full bg-[#ffeccc] shadow-2xl text-stone-800 text-center">
       <div className="card-body justify-between text-xl">
         <h2 className="card-title justify-center text-3xl">{title}</h2>
         <>{children}</>

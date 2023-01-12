@@ -47,10 +47,10 @@ const Header = () => {
     >
       <NavLink
         to={"/"}
-        className="flex flex-col items-center lg:flex-row lg:h-24 h-12 lg:ml-4 ml-2 w-fit"
+        className="flex flex-col items-center justify-center md:justify-start lg:flex-row lg:h-24 h-12 lg:ml-4 ml-2 w-fit"
       >
-        <img src={logo_image} alt="Panda" className="h-4/5 w-fit" />
-        <img src={logo_text} alt="Pandica" className="h-3/5 self-center" />
+        <img src={logo_image} alt="Panda" className="h-2/3 w-fit" />
+        <img src={logo_text} alt="Pandica" className="h-1/2 self-center" />
       </NavLink>
       <div className="flex lg:justify-evenly justify-around mx-2 lg:mx-0 group text-white lg:col-span-1 col-span-3">
         {!admin && (
