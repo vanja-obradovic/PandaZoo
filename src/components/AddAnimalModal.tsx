@@ -30,6 +30,7 @@ const AddAnimalModal = ({
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<animal_data>();
 
   const [uploadFile, uploading, snapshot, error] = useUploadFile();
@@ -62,19 +63,20 @@ const AddAnimalModal = ({
             })
           );
       });
-      console.log(snapshot);
     }
   };
 
   const handleError = (err: any) => {
     if (err.name) toast.error(err.name.message);
     if (err.description) toast.error(err.description.message);
+    if (!animalImage) toast.error("Morate izabrati sliku!");
   };
   return (
     <Modal
       open={open}
       onClose={() => {
         onClose();
+        reset();
       }}
     >
       <form
@@ -92,13 +94,17 @@ const AddAnimalModal = ({
               {...register("name", {
                 required: "Morate uneti naziv životinje!",
               })}
-              className={`input input-accent border-0 bg-orange-200 placeholder:text-stone-800 ${
-                errors.name ? "input-error" : "input-accent"
+              className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 ${
+                errors.name
+                  ? "outline-red-500 outline-2 outline-offset-2 outline"
+                  : "outline-none"
               }`}
             ></input>
             <textarea
-              className={`textarea w-full border-0 bg-orange-200 placeholder:text-stone-800 resize-none leading-tight ${
-                errors.description ? "textarea-error" : "textarea-accent"
+              className={`textarea textarea-accent w-full border-0 bg-orange-200 placeholder:text-stone-800 resize-none leading-tight ${
+                errors.description
+                  ? "outline-red-500 outline-2 outline-offset-2 outline"
+                  : "outline-none"
               }`}
               placeholder="Opis životinje"
               rows={7}
@@ -108,7 +114,7 @@ const AddAnimalModal = ({
           {/* <div className="flex items-center justify-center"> */}
           {!animalImage ? (
             <button
-              className="btn btn-accent btn-wide"
+              className="btn btn-info btn-wide"
               onClick={() => document.getElementById("file-input")?.click()}
               type={"button"}
             >

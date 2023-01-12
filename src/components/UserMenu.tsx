@@ -33,7 +33,7 @@ const UserMenu = ({
   return (
     <div className="relative">
       <button
-        className="rounded-[50%] bg-orange-100 text-3xl p-3 cursor-pointer btn-ghost hover:bg-orange-200 active:scale-90 transition-transform ease-in-out duration-100 relative"
+        className="rounded-[50%] bg-orange-100 text-3xl p-3 cursor-pointer btn-ghost hover:bg-orange-200 active:scale-90 transition-transform ease-in-out duration-100 relative aspect-square"
         onClick={() => setOpen(!open)}
       >
         {user?.displayName?.split(" ").map((item) => item.charAt(0)) ?? "AA"}

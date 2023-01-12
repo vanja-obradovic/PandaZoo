@@ -132,8 +132,10 @@ const BuyModal = ({
                 valueAsNumber: true,
               })}
               onChange={(e) => setQuantity(e.target.valueAsNumber)}
-              className={`input border-0 bg-orange-200 placeholder:text-stone-800 ${
-                errors.quantity ? "input-error" : "input-accent"
+              className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 ${
+                errors.quantity
+                  ? "outline-red-500 outline-2 outline-offset-2 outline"
+                  : "outline-none"
               }`}
             ></input>
           )}

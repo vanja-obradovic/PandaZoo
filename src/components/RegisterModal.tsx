@@ -35,6 +35,7 @@ const RegisterModal = ({
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<register_data>({ shouldUnregister: true });
 
   const [updateProfile] = useUpdateProfile(getAuth(app));
@@ -50,14 +51,19 @@ const RegisterModal = ({
         username: data.username,
         pendingNotification: false,
       });
+      if (res?.user) {
+        reset();
+        onClose();
+      } else if (error) {
+        if (error.code === "auth/invalid-email")
+          toast.error("Uneti email nije validan!");
+        else if (error.code === "auth/weak-password")
+          toast.error(
+            "Lozinka nije dovoljno jaka (minimalno 8 karaktera, 1 malo slovo, 1 veliko slovo i 1 broj)!"
+          );
+        else "Serverska greska pokusajte ponovo!";
+      }
     });
-    if (!error) onClose();
-    else
-      toast.error(
-        error.code === "auth/user-not-found"
-          ? "Pogresno korisnicko ime ili lozinka!"
-          : "Serverska greska, pokusajte ponovo"
-      );
   };
   const handleError = (err: any) => {
     if (err.username) toast.error(err.username.message);
@@ -69,7 +75,13 @@ const RegisterModal = ({
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal
+      open={open}
+      onClose={() => {
+        reset();
+        onClose();
+      }}
+    >
       <form
         className="flex flex-col flex-shrink-0 flex-grow items-center justify-evenly w-full"
         onSubmit={handleSubmit(handleRegister, handleError)}
@@ -77,8 +89,10 @@ const RegisterModal = ({
         <h1 className="text-3xl text-stone-800 font-semibold">Prijavite se</h1>
         <div className="flex flex-col items-center justify-evenly gap-y-4 w-3/5 mt-4">
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.name ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.name
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="text"
             {...register("name", {
@@ -87,8 +101,10 @@ const RegisterModal = ({
             placeholder="Ime"
           />
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.surname ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.surname
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="text"
             {...register("surname", {
@@ -97,8 +113,10 @@ const RegisterModal = ({
             placeholder="Prezime"
           />
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.phone ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.phone
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="text"
             {...register("phone", {
@@ -107,8 +125,10 @@ const RegisterModal = ({
             placeholder="Telefon"
           />
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.address ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.address
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="text"
             {...register("address", {
@@ -117,18 +137,22 @@ const RegisterModal = ({
             placeholder="Adresa"
           />
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.username
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
-            type="text"
+            type="email"
             {...register("username", {
               required: "Morate uneti korisncko ime!",
             })}
             placeholder="Korisnicko ime(Email)"
           />
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.password ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.password
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="password"
             {...register("password", {
@@ -142,7 +166,14 @@ const RegisterModal = ({
         </button>
         <span className="text-lg mt-4">
           Imate nalog? Prijavite se
-          <button className="btn-ghost underline ml-1" onClick={toggle}>
+          <button
+            className="btn-ghost underline ml-1"
+            onClick={() => {
+              reset();
+              toggle();
+            }}
+            type="button"
+          >
             ovde.
           </button>
         </span>

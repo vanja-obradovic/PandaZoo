@@ -33,18 +33,17 @@ const LogInModal = ({
   } = useForm<login_data>();
 
   const handleLogin = (data: login_data) => {
-    login(data.username, data.password);
-    console.log(data.username + " " + data.password);
-    console.log(error);
-    if (!error) {
-      onClose();
-      reset();
-    } else
-      toast.error(
-        error.code === "auth/user-not-found"
-          ? "Pogresno korisnicko ime ili lozinka!"
-          : "Serverska greska, pokusajte ponovo"
-      );
+    login(data.username, data.password).then((res) => {
+      if (res?.user) {
+        onClose();
+        reset();
+      } else if (error)
+        toast.error(
+          error.code === "auth/user-not-found"
+            ? "Pogresno korisnicko ime ili lozinka!"
+            : "Serverska greska, pokusajte ponovo"
+        );
+    });
   };
   const handleError = (err: any) => {
     if (err.username) toast.error(err.username.message);
@@ -60,8 +59,10 @@ const LogInModal = ({
         <h1 className="text-3xl text-stone-800 font-semibold">Prijavite se</h1>
         <div className="flex flex-col items-center justify-evenly gap-y-4 w-3/5">
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.username ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.username
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="email"
             placeholder="Korisnicko ime"
@@ -70,8 +71,10 @@ const LogInModal = ({
             })}
           />
           <input
-            className={`input border-0 bg-orange-200 placeholder:text-stone-800 w-full ${
-              errors.password ? "input-error" : "input-accent"
+            className={`input input-accent border-none bg-orange-200 placeholder:text-stone-800 w-full ${
+              errors.password
+                ? "outline-red-500 outline-2 outline-offset-2 outline"
+                : "outline-none"
             }`}
             type="password"
             {...register("password", {
