@@ -37,12 +37,13 @@ const LogInModal = ({
       if (res?.user) {
         onClose();
         reset();
-      } else if (error)
-        toast.error(
-          error.code === "auth/user-not-found"
-            ? "Pogresno korisnicko ime ili lozinka!"
-            : "Serverska greska, pokusajte ponovo"
-        );
+      } else if (error) {
+        if (error.code === "auth/user-not-found")
+          toast.error("Korisnik sa unetim kredencijalima ne postoji!");
+        else if (error.code === "auth/wrong-password")
+          toast.error("Lozinka nije ispravna!");
+        else "Serverska greska pokusajte ponovo!";
+      }
     });
   };
   const handleError = (err: any) => {
