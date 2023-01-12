@@ -42,16 +42,16 @@ const RegisterModal = ({
 
   const handleRegister = (data: register_data) => {
     registerUser(data.username, data.password).then((res) => {
-      updateProfile({ displayName: data.name + " " + data.surname });
-      setDoc(doc(getFirestore(app), "/users", data.username), {
-        name: data.name,
-        surname: data.surname,
-        address: data.address,
-        phone: data.phone,
-        username: data.username,
-        pendingNotification: false,
-      });
       if (res?.user) {
+        updateProfile({ displayName: data.name + " " + data.surname });
+        setDoc(doc(getFirestore(app), "/users", data.username), {
+          name: data.name,
+          surname: data.surname,
+          address: data.address,
+          phone: data.phone,
+          username: data.username,
+          pendingNotification: false,
+        });
         reset();
         onClose();
       } else if (error) {
