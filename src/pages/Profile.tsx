@@ -108,7 +108,7 @@ const Profile = () => {
   const [signout] = useSignOut(getAuth(app));
 
   return (
-    <div className="flex m-auto lg:my-auto my-4 lg:h-[clamp(400px,750px,80vh)] items-center justify-center gap-x-8 w-full lg:flex-row flex-col gap-y-4 lg:gap-y-0">
+    <div className="flex m-auto lg:h-[clamp(400px,750px,80vh)] items-center justify-center gap-x-8 w-full lg:flex-row flex-col gap-y-4 lg:gap-y-0 py-4 lg:py-0">
       <div className="flex flex-col gap-y-4 min-w-[25%]">
         <div className="flex flex-col">
           <label htmlFor={`${id}-name`}>Ime</label>
