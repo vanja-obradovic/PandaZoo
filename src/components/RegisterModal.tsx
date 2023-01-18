@@ -61,6 +61,8 @@ const RegisterModal = ({
           toast.error(
             "Lozinka nije dovoljno jaka (minimalno 8 karaktera, 1 malo slovo, 1 veliko slovo i 1 broj)!"
           );
+        else if (error.code === "auth/email-already-in-use")
+          toast.error("Korisnik sa unetom email adresom vec postoji!");
         else "Serverska greska pokusajte ponovo!";
       }
     });
