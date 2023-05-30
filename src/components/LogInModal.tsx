@@ -107,6 +107,21 @@ const LogInModal = ({
             ovde.
           </button>
         </span>
+        <span className="text-lg">
+          Mobilnu aplikaciju mozete probati
+          <button
+            className="btn-ghost underline ml-1"
+            onClick={() =>
+              window.open(
+                "https://expo.dev/@vanja-dev/panda-zoo-mobile",
+                "_blank"
+              )
+            }
+            type={"button"}
+          >
+            ovde.
+          </button>
+        </span>
       </form>
     </Modal>
   );
